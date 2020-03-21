@@ -1,23 +1,26 @@
 package com.example.myapplication;
 
 public class Theatre {
-    String ID;
     String Name;
-    String lol;
+    String Country;
+    String Address;
+    String Open;
 
-    public Theatre(String name, String id)
+    public Theatre(String country, String name, String open , String address)
     {
-        ID = id;
+        Country = country;
         Name = name;
+        Open = open;
+        Address = address;
     }
     public String getName()
     {
         return Name;
-
     }
 
-    public String getID()
-    {
-        return ID;
-    }
+    public String getOpen() { return Open; }
+
+    public String getCountry() { return Country;}
+
+    public String getAddress() { return Address;}
 }
