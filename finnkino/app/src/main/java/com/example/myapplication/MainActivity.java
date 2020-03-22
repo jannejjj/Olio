@@ -23,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
     Spinner kinoSpinner;
     Finnkino finnkino = Finnkino.getInstance();
     ConstraintLayout constraintLayout;
-    TextView dateView;
     ListView listView;
+    CustomAdapter customAdapter;
 
 
     @SuppressLint("ResourceAsColor")
@@ -39,10 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         constraintLayout = (ConstraintLayout)findViewById(R.id.ConstraintLayout);
         kinoSpinner = (Spinner)findViewById(R.id.spinner);
-        dateView = (TextView)findViewById(R.id.dateView);
         listView = (ListView)findViewById(R.id.listView);
-
-        final CustomAdapter customAdapter = new CustomAdapter();
 
 
 
@@ -54,11 +51,8 @@ public class MainActivity extends AppCompatActivity {
         kinoSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (position !=0)
-                    listView.setAdapter(customAdapter);
 
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
@@ -70,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void readXML() {
-        finnkino.readXML_FI();
+       // finnkino.readXML_FI();
         finnkino.readXML_EST();
     }
 
@@ -112,5 +106,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void search(View v)
+    {
 
+        customAdapter = new CustomAdapter();
+        listView.setAdapter(customAdapter);
+    }
 }

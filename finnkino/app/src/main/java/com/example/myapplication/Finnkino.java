@@ -11,7 +11,10 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -102,17 +105,28 @@ public class Finnkino {
                     String open = element.getElementsByTagName("availability").item(0).getTextContent();
                     String address = element.getElementsByTagName("address").item(0).getTextContent();
 
-                    if (open.contains("E"))
+                    List<Boolean> openDays = new ArrayList<Boolean>(Arrays.asList(new Boolean[10]));
+                    Collections.fill(openDays, false);
+
+                    String openTranslated = "";
+
+                    if (open.contains("E-P"))
                     {
-                        open.replace("E", "ma");
+                        openTranslated = open.replace("E", "ma");
+
+                       /* for (int i = 0; i < 6; i++)
+                        {
+                            openDays[i] = true;
+                        } */
+
                     }
-                    else if (open.contains("L"))
+                    if (open.contains("L"))
                     {
-                        open.replace("L", "la");
+                        openTranslated = openTranslated.replace("L", "la");
                     }
-                    else if (open.contains("P"))
+                    if (open.contains("P"))
                     {
-                        open.replace("P", "su");
+                        openTranslated = openTranslated.replace("P", "su");
                     }
 
                     /*String[] split = open.split(" ");
@@ -120,7 +134,7 @@ public class Finnkino {
                     String openDays = split[0];
                     String openHours = split[1];*/
 
-                    Theatre t = new Theatre(country, name, open, address); // actually a post office
+                    Theatre t = new Theatre(country, name, openTranslated, address); // actually a post office
                     postList.add(t);
 
                 }
@@ -156,7 +170,10 @@ public class Finnkino {
     }
 
     public ArrayList getPostList() {
+
+
         return postList;
+
     }
 
     public int getPostListLength() {
