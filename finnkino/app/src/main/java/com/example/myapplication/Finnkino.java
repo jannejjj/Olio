@@ -154,7 +154,7 @@ public class Finnkino {
     public ArrayList getPostNames() // this provides a list of theatres for the spinner
     {
         ArrayList<String> postNames = new ArrayList();
-        postNames.add("Choose a Finnkino:");
+        postNames.add("Choose a post office:");
         for (Theatre t : postList) {
             String s = t.getName();
             postNames.add(s);
