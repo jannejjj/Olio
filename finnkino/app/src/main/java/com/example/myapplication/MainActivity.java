@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void readXML() {
-       // finnkino.readXML_FI();
+        finnkino.readXML_FI();
         finnkino.readXML_EST();
     }
 
