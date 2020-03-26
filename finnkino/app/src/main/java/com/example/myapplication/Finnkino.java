@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+/* Honestly i was too lazy to make a new project so anything Kino-named should actually be SmartPost-related. Sorry for the confusion */
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -34,7 +35,6 @@ public class Finnkino {
     {
 
     }
-    // TODO miten saa viikonpäivät talteen?
 
 
     public void readXML_FI() {
@@ -93,9 +93,9 @@ public class Finnkino {
             Document doc = builder.parse(url);
             doc.getDocumentElement().normalize();
 
-            NodeList nList = doc.getDocumentElement().getElementsByTagName("item"); // NodeList of every theatre (post) node
+            NodeList nList = doc.getDocumentElement().getElementsByTagName("item"); // NodeList of every theatre (post office) node
 
-            for (int i = 0; i < nList.getLength(); i++) { // Iterating through the NodeList and listing the Theatres into the ArrayList
+            for (int i = 0; i < nList.getLength(); i++) { // Iterating through the NodeList and listing the Theatres (post offices) into the ArrayList
                 Node node = nList.item(i);
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
                     Element element = (Element) node;
@@ -108,17 +108,13 @@ public class Finnkino {
                     List<Boolean> openDays = new ArrayList<Boolean>(Arrays.asList(new Boolean[10]));
                     Collections.fill(openDays, false);
 
+                    // Translating the weekdays to Finnish
+
                     String openTranslated = "";
 
                     if (open.contains("E-P"))
                     {
                         openTranslated = open.replace("E", "ma");
-
-                       /* for (int i = 0; i < 6; i++)
-                        {
-                            openDays[i] = true;
-                        } */
-
                     }
                     if (open.contains("L"))
                     {
@@ -128,11 +124,6 @@ public class Finnkino {
                     {
                         openTranslated = openTranslated.replace("P", "su");
                     }
-
-                    /*String[] split = open.split(" ");
-
-                    String openDays = split[0];
-                    String openHours = split[1];*/
 
                     Theatre t = new Theatre(country, name, openTranslated, address); // actually a post office
                     postList.add(t);
@@ -163,7 +154,7 @@ public class Finnkino {
     }
 
 
-    public Theatre getInfo(int pos)
+    public Theatre getInfo(int pos) // not used since i only completed assignment 3 / 5
     {
         Theatre t = postList.get(pos);
         return t;
