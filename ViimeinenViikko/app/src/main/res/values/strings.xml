@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ViimeinenViikko</string>
+    <string name="Open">Avaa valikko</string>
+    <string name="Close">Sulje valikko</string>
+</resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:showIn="navigation_view">
+
+
+    <item android:id="@+id/fontsizeup"
+        android:title="Font size up"/>
+
+    <item android:id="@+id/fontsizedown"
+        android:title="Font size down"/>
+
+    <item android:id="@+id/bold"
+        android:title="Bold"/>
+
+    <item android:id="@+id/red"
+        android:title="Red"/>
+
+
+
+</menu>
